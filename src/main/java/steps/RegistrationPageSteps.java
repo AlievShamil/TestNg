@@ -23,7 +23,7 @@ public class RegistrationPageSteps{
 
     @Step("выполнено нажатие на \'Зарегестрироваться\'")
     public void clickToRegistration(){
-        new RegistrationPage(getDriver()).submitBtn.click();
+        new RegistrationPage(getDriver()).clickSubmit();
     }
 
     @Step("выполнен переход в эл. почту")

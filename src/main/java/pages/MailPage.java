@@ -22,7 +22,7 @@ public class MailPage extends BasePage {
     @FindBy(id = "mailbox__auth__button")
     public WebElement mailAuthBtn;
 
-    @FindBy(xpath = "//div[contains(@class,'item_unread')][@data-bem='b-datalist__item']//*[contains(text(),'eBay!')]")
+    @FindBy(xpath = "(//div[contains(@class,'item_unread')][.//div[text()='eBay']]//div[contains(text(),'Подтвердите ваш адрес')])[1]")
     public WebElement mailMessage;
 
     @FindBy(xpath = "//span[contains(text(),'Start Shopping')]")
@@ -46,13 +46,11 @@ public class MailPage extends BasePage {
     }
 
     public void checkRelevance() {
-
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOf(
-                driver.findElement(By.xpath("//div[contains(@class,'b-datalist__body')]"))
+                driver.findElement(By.xpath(".//*[@class='rbVideoBanner']"))
         ));
         assertTrue(mailMessage.isDisplayed());
-
     }
 }
 

@@ -30,5 +30,6 @@ public class MailPageSteps {
     public void gotoEbay() {
         new MailPage(getDriver()).mailMessage.click();
         getDriver().get(TestProperties.getInstance().getProperties().getProperty("app.url"));
+        getDriver().navigate().refresh();
     }
 }

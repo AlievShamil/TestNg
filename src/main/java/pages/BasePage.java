@@ -13,14 +13,23 @@ public class BasePage {
         element.clear();
         element.sendKeys(value);
     }
-
-    protected boolean isElementPresent(WebElement element) {
+    public boolean isElementPresent(WebElement element) {
         try {
-//            driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             return element.isDisplayed();
         } catch (NoSuchElementException e) {
             e.printStackTrace();
+        }finally {
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         }
         return false;
+    }
+
+
+    public void fillFieldIfPresent(WebElement element, String value) {
+        if (isElementPresent(element)) {
+            element.clear();
+            element.sendKeys(value);
+        }
     }
 }
