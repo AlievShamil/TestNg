@@ -26,8 +26,9 @@ public class MailPageSteps {
         new MailPage(getDriver()).checkRelevance();
     }
 
-    @Step("переходим на Ebay")
+    @Step("нажатие на кнопку Подтвердить")
     public void gotoEbay() {
+//        new MailPage(getDriver()).verificationMail();
         new MailPage(getDriver()).mailMessage.click();
         getDriver().get(TestProperties.getInstance().getProperties().getProperty("app.url"));
         getDriver().navigate().refresh();

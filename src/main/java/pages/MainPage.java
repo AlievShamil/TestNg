@@ -25,8 +25,8 @@ public class MainPage extends BasePage {
     @FindBy(id = "gh-ac")
     private WebElement searchElement;
 
-    @FindBy(id = "cbBtmElem")
-    private WebElement displayAmountMenu;
+    @FindBy(xpath = "//*[text()='Sponsored Links']")
+    public WebElement links;
 
     @FindBy(id = "gh-ug")
     private WebElement authorizationMenu;
@@ -35,7 +35,7 @@ public class MainPage extends BasePage {
     private WebElement personalMenu;
 
     @FindBy(xpath = "//div[@class='ds3pHCnt']")
-    public WebElement successfulExitElem;
+    private WebElement successfulExitElem;
 
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -48,15 +48,15 @@ public class MainPage extends BasePage {
     }
 
     public void checkDisplayQuantity() {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", displayAmountMenu);
-        new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOf(
-                displayAmountMenu.findElement(By.xpath("//a[@aria-labelledby='e1-11']"))
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", links);
+        new WebDriverWait(driver,10).until(ExpectedConditions.visibilityOf(
+                driver.findElement(By.xpath("//*[contains(@class,'small btn-ter dropdown-toggle')]"))
         ));
-        assertEquals(displayAmountMenu.findElement(By.xpath("//a[contains(@aria-labelledby,'e1-11')]")).getText(),"50");
+        assertEquals(driver.findElement(By.xpath("//*[contains(@class,'small btn-ter dropdown-toggle')]")).getText(),"50");
     }
 
     public void scrollAndSignOut() {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", authorizationMenu);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", authorizationMenu);
         authorizationMenu.findElement(By.xpath("//b[contains(@class,'gh-eb-arw')]")).click();
 //        new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOf(
 //        )).click();

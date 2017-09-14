@@ -25,7 +25,7 @@ public class MailPage extends BasePage {
     @FindBy(xpath = "(//div[contains(@class,'item_unread')][.//div[text()='eBay']]//div[contains(text(),'Подтвердите ваш адрес')])[1]")
     public WebElement mailMessage;
 
-    @FindBy(xpath = "//span[contains(text(),'Start Shopping')]")
+    @FindBy(xpath = "//*[contains(text(),'Подтвердить')]")
     private WebElement gotoShoppingBtn;
 
 
@@ -51,5 +51,10 @@ public class MailPage extends BasePage {
                 driver.findElement(By.xpath(".//*[@class='rbVideoBanner']"))
         ));
         assertTrue(mailMessage.isDisplayed());
+    }
+
+    public void verificationMail() {
+        mailMessage.click();
+        gotoShoppingBtn.click();
     }
 }
