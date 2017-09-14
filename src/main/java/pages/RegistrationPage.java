@@ -25,11 +25,11 @@ public class RegistrationPage extends BasePage {
     @FindBy(id = "PASSWORD")
     private WebElement password;
 
-    @FindBy(id = "phoneFlagComp1")
-    private WebElement phone;
-
     @FindBy(xpath = ".//*[@id='sbtBtn']")
     public WebElement submitBtn;
+
+    @FindBy(xpath = ".//*[@id='ppaFormSbtBtn']")
+    public WebElement subBtn;
 
     @FindBy(xpath = ".//*[text()='Заменить учетную запись']")
     public WebElement changeReg;
@@ -42,34 +42,34 @@ public class RegistrationPage extends BasePage {
         this.driver = driver;
     }
 
-    public void clickSubmit(){
-        new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(submitBtn));
-        submitBtn.click();
-        new WebDriverWait(getDriver(),5).until(ExpectedConditions.visibilityOf(changeReg));
+    public void clickSubmit() {
+        if(isElementPresent(subBtn)){
+            new WebDriverWait(getDriver(),10).until(ExpectedConditions.elementToBeClickable(subBtn)).click();
+        } else {
+            new WebDriverWait(getDriver(), 10).until(ExpectedConditions.elementToBeClickable(submitBtn)).click();
+        }
+        new WebDriverWait(getDriver(), 5).until(ExpectedConditions.visibilityOf(changeReg));
         changeReg.click();
-        new WebDriverWait(getDriver(),5).until(ExpectedConditions.visibilityOf(linkToReg));
+        new WebDriverWait(getDriver(), 5).until(ExpectedConditions.visibilityOf(linkToReg));
 
     }
 
     public void fillField(String fieldName, String value) {
         switch (fieldName) {
-            case "Эл. почта":
-                fillField(email, value);
-                break;
-            case "Подтверждение эл. почты":
-                fillFieldIfPresent(remail, value);
-                break;
             case "Имя":
                 fillField(firstname, value);
                 break;
             case "Фамилия":
                 fillField(lastname, value);
                 break;
+            case "Эл. почта":
+                fillField(email, value);
+                break;
             case "Пароль":
                 fillField(password, value);
                 break;
-            case "Телефон":
-                fillFieldIfPresent(phone, value);
+            case "Подтверждение эл. почты":
+                fillFieldIfPresent(remail, value);
                 break;
         }
     }

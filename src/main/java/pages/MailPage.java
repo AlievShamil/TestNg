@@ -53,6 +53,3 @@ public class MailPage extends BasePage {
         assertTrue(mailMessage.isDisplayed());
     }
 }
-
-
-

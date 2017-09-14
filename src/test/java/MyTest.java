@@ -1,7 +1,7 @@
 import org.testng.annotations.Test;
 import steps.*;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class MyTest extends BaseSteps  {
     MainPageSteps mainPageSteps = new MainPageSteps();
@@ -9,7 +9,7 @@ public class MyTest extends BaseSteps  {
     MailPageSteps mailPageSteps = new MailPageSteps();
     LoginPageSteps loginPageSteps = new LoginPageSteps();
 
-    HashMap<String,String> testData = new HashMap<>();
+    LinkedHashMap<String,String> testData = new LinkedHashMap<>();
 
 
     @Test(description = "Регистрация на ebay и поиск товара")
