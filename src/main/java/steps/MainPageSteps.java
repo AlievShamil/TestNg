@@ -14,9 +14,7 @@ public class MainPageSteps {
 
     @Step("выполнено нажатие на \'Войдите\'")
     public void goToLoginPage() {
-        for (String winHandle : getDriver().getWindowHandles()) {
-            getDriver().switchTo().window(winHandle);
-        }
+        new MainPage(getDriver()).signInBtn.click();
     }
 
     @Step("поиск товара blackberry")

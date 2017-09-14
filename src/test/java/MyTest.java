@@ -15,7 +15,7 @@ public class MyTest extends BaseSteps  {
     @Test(description = "Регистрация на ebay и поиск товара")
     public void test() {
         testData.put("Эл. почта","aplanatestng1@mail.ru");
-        testData.put("Подтверждение эл. почты","aplanatestng@mail.ru");
+        testData.put("Подтверждение эл. почты","aplanatestng1@mail.ru");
         testData.put("Пароль","123N123_nb");
         testData.put("Имя","Иван");
         testData.put("Фамилия","Иванов");
