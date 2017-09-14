@@ -11,8 +11,6 @@ import static steps.BaseSteps.getDriver;
 
 public class RegistrationPageSteps{
 
-    Properties properties = TestProperties.getInstance().getProperties();
-
     @Step("поле {0} заполняется значением {1}")
     private void fillField(String field, String value){
         new RegistrationPage(getDriver()).fillField(field, value);
@@ -30,7 +28,7 @@ public class RegistrationPageSteps{
 
     @Step("выполнен переход в эл. почту")
     public void gotoMail() {
-        getDriver().get(properties.getProperty("mail.url"));
+        getDriver().get(TestProperties.getInstance().getProperties().getProperty("mail.url"));
     }
 
 }

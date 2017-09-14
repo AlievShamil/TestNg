@@ -22,10 +22,10 @@ public class MailPage extends BasePage {
     @FindBy(id = "mailbox__auth__button")
     public WebElement mailAuthBtn;
 
-    @FindBy(xpath = "//*[@id='b-letters']/div[1]/div[2]/div/div[2]/div[3]/div/a/div[2]/span[2]/div")
-    private WebElement mailMessage;
+    @FindBy(xpath = "//div[contains(@class,'item_unread')][@data-bem='b-datalist__item']//*[contains(text(),'eBay!')]")
+    public WebElement mailMessage;
 
-    @FindBy(name = "Перейти к покупкам")
+    @FindBy(xpath = "//span[contains(text(),'Start Shopping')]")
     private WebElement gotoShoppingBtn;
 
 
@@ -46,18 +46,15 @@ public class MailPage extends BasePage {
     }
 
     public void checkRelevance() {
-        Wait<WebDriver> wait = new WebDriverWait(driver, 3, 1000);
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOf(
-                driver.findElement(By.xpath("//*[@id='b-letters']/div[1]/div[2]/div/div[2]/div[3]/div/a/div[2]/span[2]/div"))
+                driver.findElement(By.xpath("//div[contains(@class,'b-datalist__body')]"))
         ));
-        assertEquals("b-letterstatus b-letterstatus_unread", driver.findElement(By.xpath("//*[@id='b-letters']/div[1]/div[2]/div/div[2]/div[3]/div/a/div[2]/span[2]/div")).getAttribute("class"));
+        assertTrue(mailMessage.isDisplayed());
 
     }
-
-    public void accountActivation() {
-        mailMessage.click();
-
-    }
-
-
 }
+
+
+

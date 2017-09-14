@@ -2,6 +2,7 @@ package steps;
 
 import pages.MailPage;
 import ru.yandex.qatools.allure.annotations.Step;
+import util.TestProperties;
 
 import java.util.HashMap;
 
@@ -27,6 +28,7 @@ public class MailPageSteps {
 
     @Step("переходим на Ebay")
     public void gotoEbay() {
-        new MailPage(getDriver()).accountActivation();
+        new MailPage(getDriver()).mailMessage.click();
+        getDriver().get(TestProperties.getInstance().getProperties().getProperty("app.url"));
     }
 }
