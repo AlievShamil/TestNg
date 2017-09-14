@@ -25,7 +25,7 @@ public class MyTest extends BaseSteps  {
         registrationPageSteps.clickToRegistration();
         registrationPageSteps.gotoMail();
 
-        testData.put("Password","qwert12345");
+        testData.put("Password","123N123_nb");
         mailPageSteps.signInMail(testData);
         mailPageSteps.checkRelevanceOfLetter();
         mailPageSteps.gotoEbay();
