@@ -12,7 +12,7 @@ import static steps.BaseSteps.getDriver;
 public class RegistrationPageSteps{
 
     @Step("поле {0} заполняется значением {1}")
-    private void fillField(String field, String value){
+    public void fillField(String field, String value){
         new RegistrationPage(getDriver()).fillField(field, value);
     }
 

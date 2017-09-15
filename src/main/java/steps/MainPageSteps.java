@@ -7,12 +7,12 @@ import static steps.BaseSteps.getDriver;
 
 public class MainPageSteps {
 
-    @Step("выполнено нажатие на \'зарегистрируйтесь\'")
+    @Step("выполнено нажатие на Зарегистрируйтесь")
     public void goToRegistrationPage() {
         new MainPage(getDriver()).signUpBtn.click();
     }
 
-    @Step("выполнено нажатие на \'Войдите\'")
+    @Step("выполнено нажатие на Войдите")
     public void goToLoginPage() {
         new MainPage(getDriver()).signInBtn.click();
     }

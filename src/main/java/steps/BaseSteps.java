@@ -1,12 +1,12 @@
 package steps;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import ru.yandex.qatools.allure.annotations.Attachment;
 import util.TestProperties;
 
@@ -23,7 +23,7 @@ public class BaseSteps {
         return driver;
     }
 
-    @BeforeClass
+    @Before
     public static void setUp() {
         switch (properties.getProperty("browser")) {
             case "firefox":
@@ -46,7 +46,7 @@ public class BaseSteps {
         driver.get(baseUrl);
     }
 
-    @AfterClass
+    @After
     public static void tearDown(){
         driver.quit();
     }
