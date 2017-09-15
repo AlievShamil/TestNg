@@ -10,7 +10,7 @@ import static steps.BaseSteps.getDriver;
 
 public class LoginPageSteps {
     @Step("поле {0} заполняется значением {1}")
-    private void fillField(String field, String value){
+    public void fillField(String field, String value){
         new LoginPage(getDriver()).fillField(field, value);
     }
 
@@ -19,8 +19,8 @@ public class LoginPageSteps {
         fields.forEach(this::fillField);
     }
 
-    @Step("выполнен вход в личный кабинет'")
-    public void login(){
+    @Step("выполнено нажатие на Войдите в систему'")
+    public void clickSigIn(){
         new LoginPage(getDriver()).submitBtn.click();
     }
 

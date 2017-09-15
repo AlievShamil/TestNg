@@ -21,7 +21,7 @@ public class RegistrationPageSteps{
         fields.forEach(this::fillField);
     }
 
-    @Step("выполнено нажатие на \'Зарегестрироваться\'")
+    @Step("выполнено нажатие на Зарегестрироваться")
     public void clickToRegistration(){
         new RegistrationPage(getDriver()).clickSubmit();
     }

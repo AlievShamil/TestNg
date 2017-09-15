@@ -24,7 +24,7 @@ public class MailPage extends BasePage {
     public WebElement mailMessage;
 
     @FindBy(xpath = "//*[contains(text(),'Подтвердить')]")
-    private WebElement gotoShoppingBtn;
+    private WebElement clickConfirm;
 
 
     public MailPage(WebDriver driver) {
@@ -34,10 +34,10 @@ public class MailPage extends BasePage {
 
     public void fillField(String fieldName, String value) {
         switch (fieldName) {
-            case "Эл. почта":
+            case "Логин":
                 fillField(mailLogin, value);
                 break;
-            case "Password":
+            case "Пароль":
                 fillField(mailPassword, value);
                 break;
         }
@@ -51,8 +51,8 @@ public class MailPage extends BasePage {
         assertTrue(mailMessage.isDisplayed());
     }
 
-    public void verificationMail() {
+    public void openLetter() {
         mailMessage.click();
-        gotoShoppingBtn.click();
+        new WebDriverWait(driver,10).until(ExpectedConditions.visibilityOf(clickConfirm));
     }
 }

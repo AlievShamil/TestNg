@@ -13,7 +13,7 @@ public class MainPageSteps {
     }
 
     @Step("выполнено нажатие на Войдите")
-    public void goToLoginPage() {
+    public void clickLogin() {
         new MainPage(getDriver()).signInBtn.click();
     }
 
@@ -32,7 +32,7 @@ public class MainPageSteps {
         new MainPage(getDriver()).scrollAndSignOut();
     }
 
-    @Step("успешный выход из учетной записи")
+    @Step("выполненна проверка выхода из учетной записи")
     public void checkSignOut() {
         new MainPage(getDriver()).successfulExit();
     }

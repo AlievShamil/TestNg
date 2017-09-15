@@ -11,7 +11,7 @@ import static steps.BaseSteps.getDriver;
 public class MailPageSteps {
 
     @Step("поле {0} заполняется значением {1}")
-    private void fillField(String field, String value) {
+    public void fillField(String field, String value) {
         new MailPage(getDriver()).fillField(field,value);
     }
 
@@ -21,15 +21,20 @@ public class MailPageSteps {
         new MailPage(getDriver()).mailAuthBtn.click();
     }
 
+    @Step("выполнено нажатие на Войти")
+    public void clickIn(){
+        new MailPage(getDriver()).mailAuthBtn.click();
+    }
+
     @Step("проверка актуальности письма")
     public void checkRelevanceOfLetter(){
         new MailPage(getDriver()).checkRelevance();
     }
 
-    @Step("нажатие на кнопку Подтвердить")
-    public void gotoEbay() {
+    @Step("выполнено открытие актуального письма")
+    public void openLetter() {
 //        new MailPage(getDriver()).verificationMail();
-        new MailPage(getDriver()).mailMessage.click();
+        new MailPage(getDriver()).openLetter();
         getDriver().get(TestProperties.getInstance().getProperties().getProperty("app.url"));
         getDriver().navigate().refresh();
     }
